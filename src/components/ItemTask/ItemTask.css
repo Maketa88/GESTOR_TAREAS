@@ -1,0 +1,58 @@
+.item-task {
+  
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  border-bottom: solid 1px #fff;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+  background-color: #eaeef3;
+}
+
+.item-task > .circle-state {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #ff0000bf;
+}
+
+.item-task > h2 {
+  font-size: 1.2rem;
+  width: 30%;
+  color: #000300;
+  font-weight: 900;
+}
+
+.item-task > p {
+  color: #000300;
+  font-style: italic;
+  font-size: 1.2rem;
+  text-align: left;
+  width: 30%;
+}
+
+.checked {
+  text-decoration: line-through;
+  font-weight: bold; /* Hace que el texto sea más grueso */
+
+  text-decoration-color: #008000;
+}
+
+.item-task > .circle-green {
+  background-color: #0080009f;
+}
+
+.item-task > input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.2rem; /* Bordes redondeados */
+  cursor: pointer;
+  position: relative;
+  
+}
+
+.Container-tasks{
+  padding: 1rem;
+}
