@@ -15,11 +15,11 @@ export const FilterTasks = () => {
 
   return (
     <div className="container-filters">
-        <label>Filtrar por </label>
+        <label>Filter by </label>
         <select onChange={handleFilters} value={context.currentFilter}>
-<option value = "Todas" className="opt opt1">Todas </option>
-<option value = "Pendientes" className="opt opt2">Pendientes </option>
-<option value = "Realizadas" className="opt opt2">Realizadas </option>
+<option value = "All" className="opt opt1">All</option>
+<option value = "Pending" className="opt opt2">Pending</option>
+<option value = "Completed" className="opt opt2">Completed</option>
 </select>
 
     </div>
@@ -27,8 +27,7 @@ export const FilterTasks = () => {
 }
 
 
-/* El componente FilterTasks ofrece una forma sencilla de filtrar las tareas según su estado
-(Pendientes, Realizadas o Todas) en un gestor de tareas basado en React. Utiliza React Context para acceder
- a la lista de tareas globalmente y un dropdown select para que el usuario aplique el filtro deseado. El uso del hook
- useContext permite que los cambios en el
- filtro afecten a la lista de tareas en toda la aplicación. */
+/* The FilterTasks component offers a simple way to filter tasks by their status
+(Pending, Completed, or All) in a React-based task manager. It uses React Context to access
+the task list globally and a dropdown select for the user to apply the desired filter. The use of the
+useContext hook allows changes in the filter to affect the task list throughout the application. */

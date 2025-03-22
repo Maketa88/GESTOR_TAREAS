@@ -6,17 +6,17 @@
 }
 
 :root {
-  --primary-color: #6c5ce7;
-  --primary-light: #a29bfe;
-  --secondary-color: #fd79a8;
-  --text-color: #2d3436;
-  --background-color: #f7f7f7;
+  --primary-color: #3a86ff;
+  --primary-light: #8bb8ff;
+  --secondary-color: #ff9e00;
+  --text-color: #333333;
+  --background-color: #f8f9fa;
   --card-color: #ffffff;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border-radius: 12px;
+  --border-radius: 10px;
   --transition: all 0.3s ease;
-  --pending-color: #ff6b6b;
-  --done-color: #51cf66;
+  --pending-color: #ff9e00;
+  --done-color: #4cc9f0;
 }
 
 body {
@@ -66,7 +66,7 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
 }
 
 /* Clases de utilidad */

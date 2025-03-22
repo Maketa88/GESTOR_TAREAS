@@ -7,60 +7,60 @@ export const taskContext = createContext();
 const tsk = [
   {
     id: uuidv4(),
-    title: "Corregir bug en login",
+    title: "Fix login bug",
     descripcion:
-      "Resolver el problema de autenticación en el módulo de inicio de sesión.",
+      "Solve authentication issues in the login module",
     status: false,
   },
   {
     id: uuidv4(),
-    title: "Refactorizar componente",
+    title: "Refactor component",
     descripcion:
-      "Optimizar el código del componente de usuario para mejorar el rendimiento.",
+      "Optimize user component code to improve performance",
     status: true,
   },
 
   {
     id: uuidv4(),
-    title: "Agregar validación de formulario",
+    title: "Add form validation",
     descripcion:
-      "Implementar validaciones en el formulario de registro para mejorar la entrada de datos.",
+      "Implement validations in the registration form to improve data entry",
     status: false,
   },
   {
     id: uuidv4(),
-    title: "Optimizar consultas SQL",
+    title: "Optimize SQL queries",
     descripcion:
-      "Revisar y mejorar el rendimiento de las consultas en la base de datos para reducir tiempos de respuesta.",
+      "Review and improve database query performance to reduce response times",
     status: true,
   },
 ];
 
 export const TaskProvider = ({ children }) => {
-  // Cargar tareas desde localStorage si existen, de lo contrario usar tareas predeterminadas
+  // Load tasks from localStorage if they exist, otherwise use default tasks
   const initialTasks = JSON.parse(localStorage.getItem("tasks")) || tsk;
   
   const [tasks, setTask] = useState(initialTasks);
   const [filteredTasks, setFilteredTasks] = useState(initialTasks);
   const [pendingTasks, setPendingTasks] = useState(0);
   const [doneTasks, setDoneTasks] = useState(0);
-  const [currentFilter, setCurrentFilter] = useState("Todas");
+  const [currentFilter, setCurrentFilter] = useState("All");
 
-  // Guardar tareas en localStorage cada vez que cambien
+  // Save tasks to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  // Aplicar el filtro activo cada vez que las tareas cambian
+  // Apply the active filter whenever tasks change
   useEffect(() => {
     applyFilter(currentFilter);
   }, [tasks, currentFilter]);
 
-  // Función para aplicar filtro
+  // Function to apply filter
   const applyFilter = (filter) => {
-    if (filter === "Pendientes") {
+    if (filter === "Pending") {
       setFilteredTasks(tasks.filter(task => !task.status));
-    } else if (filter === "Realizadas") {
+    } else if (filter === "Completed") {
       setFilteredTasks(tasks.filter(task => task.status));
     } else {
       setFilteredTasks(tasks);
@@ -102,12 +102,12 @@ export const TaskProvider = ({ children }) => {
   );
 };
 
-// Agregar validación de props
+// Add props validation
 TaskProvider.propTypes = {
   children: PropTypes.node.isRequired
 };
 
 /*
-Este código configura un contexto para gestionar tareas en una aplicación de React. Utiliza useState para manejar el 
-estado de las tareas y proporciona funciones para actualizar ese estado. El componente TaskProvider envuelve otros componentes y les da acceso
-a este contexto, permitiendo una gestión centralizada y eficiente de las tareas. */
+This code sets up a context for managing tasks in a React application. It uses useState to handle the
+state of tasks and provides functions to update that state. The TaskProvider component wraps other components and gives them access
+to this context, allowing centralized and efficient task management. */

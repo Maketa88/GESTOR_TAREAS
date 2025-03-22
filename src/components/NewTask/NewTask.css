@@ -44,7 +44,7 @@ label {
   border-radius: var(--border-radius);
   border: 2px solid var(--primary-light);
   font-family: inherit;
-  background-color: rgba(162, 155, 254, 0.1);
+  background-color: rgba(58, 134, 255, 0.05);
   padding: 0.75rem 1rem;
   transition: var(--transition);
   width: 100%;
@@ -59,7 +59,21 @@ label {
   outline: none;
   border-color: var(--primary-color);
   background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
 }
 
 .btn-new-task {
@@ -77,9 +91,9 @@ label {
 }
 
 .btn-new-task:hover {
-  background-color: #5845e4;
+  background-color: #1a73e8;
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(108, 92, 231, 0.3);
+  box-shadow: 0 4px 8px rgba(58, 134, 255, 0.3);
 }
 
 .btn-new-task:active {

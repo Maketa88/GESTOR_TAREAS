@@ -21,7 +21,7 @@ export const ItemTask = ({idTask, titleTask, content}) => {
       <li id={idTask} className={task.status ? "item-task checked" : "item-task"}>
         <div
           className={task.status ? "circle-state circle-green" : "circle-state"}
-          title={task.status ? "Tarea completada" : "Tarea pendiente"}
+          title={task.status ? "Completed task" : "Pending task"}
         ></div>
         <h2>{titleTask}</h2>
         <p>{content}</p>
@@ -31,16 +31,16 @@ export const ItemTask = ({idTask, titleTask, content}) => {
               type="checkbox"
               checked={task.status}
               onChange={handleCheckboxChange}
-              aria-label={task.status ? "Marcar como pendiente" : "Marcar como completada"}
+              aria-label={task.status ? "Mark as pending" : "Mark as completed"}
             />
-            <span>{task.status ? "Completada" : "Marcar como completada"}</span>
+            <span>{task.status ? "Completed" : "Mark as completed"}</span>
           </div>
           <button 
             className="delete-btn" 
             onClick={handleDelete}
-            aria-label="Eliminar tarea"
+            aria-label="Delete task"
           >
-            Eliminar
+            Delete
           </button>
         </div>
       </li>
@@ -55,7 +55,6 @@ ItemTask.propTypes = {
 };
 
 /*
-Este componente ItemTask representa una tarea individual en tu gestor de tareas. Utiliza el contexto taskContext
- para acceder a las tareas y actualizar su estado. El componente muestra el título, contenido y estado de la tarea, 
- y permite al usuario marcar la tarea como completada
- o pendiente mediante un checkbox. */
+This component ItemTask represents an individual task in your task manager. It uses the taskContext
+to access the tasks and update their status. The component displays the title, content, and status of the task,
+and allows the user to mark the task as completed or pending via a checkbox. */

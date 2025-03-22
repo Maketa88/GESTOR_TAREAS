@@ -20,17 +20,17 @@ export const Home = () => {
   return (
     <>
       <Header>
-        <h1>Gestor de tareas</h1>
+        <h1>Task Manager</h1>
         <InfoTask/>
         <NewTask/>
         <FilterTasks/>
       </Header>
       
       <Main>
-        {context.currentFilter === "Todas" ? (
+        {context.currentFilter === "All" ? (
           <div className="tasks-sections">
             <div className="tasks-section">
-              <h2 className="section-title">Tareas Pendientes</h2>
+              <h2 className="section-title">Pending Tasks</h2>
               <ContainerTasks>
                 {pendingTasks.length > 0 ? (
                   pendingTasks.map(task => 
@@ -42,13 +42,13 @@ export const Home = () => {
                     />
                   )
                 ) : (
-                  <p className="no-tasks">No hay tareas pendientes</p>
+                  <p className="no-tasks">No pending tasks</p>
                 )}
               </ContainerTasks>
             </div>
 
             <div className="tasks-section">
-              <h2 className="section-title">Tareas Completadas</h2>
+              <h2 className="section-title">Completed Tasks</h2>
               <ContainerTasks>
                 {completedTasks.length > 0 ? (
                   completedTasks.map(task => 
@@ -60,7 +60,7 @@ export const Home = () => {
                     />
                   )
                 ) : (
-                  <p className="no-tasks">No hay tareas completadas</p>
+                  <p className="no-tasks">No completed tasks</p>
                 )}
               </ContainerTasks>
             </div>
@@ -69,7 +69,7 @@ export const Home = () => {
           <div className="tasks-sections">
             <div className="tasks-section">
               <h2 className="section-title">
-                {context.currentFilter === "Pendientes" ? "Tareas Pendientes" : "Tareas Completadas"}
+                {context.currentFilter === "Pending" ? "Pending Tasks" : "Completed Tasks"}
               </h2>
               <ContainerTasks>
                 {context.filteredTasks.length > 0 ? (
@@ -82,7 +82,7 @@ export const Home = () => {
                     />
                   )
                 ) : (
-                  <p className="no-tasks">No hay tareas {context.currentFilter.toLowerCase()}</p>
+                  <p className="no-tasks">No {context.currentFilter.toLowerCase()} tasks</p>
                 )}
               </ContainerTasks>
             </div>
