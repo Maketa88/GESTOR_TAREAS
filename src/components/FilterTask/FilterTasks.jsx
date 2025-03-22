@@ -8,21 +8,15 @@ export const FilterTasks = () => {
     const context =useContext(taskContext)
 
     const handleFilters =(event)=> {
-        let currentOption = event.target.value
-        if (currentOption ==='Pendientes'){
-            context.setFilteredTasks (context.tasks.filter(task => !task.status))
-
-        }else if (currentOption==='Realizadas'){
-            context.setFilteredTasks (context.tasks.filter(task => task.status))
-        } else {
-            context.setFilteredTasks (context.tasks)
-        }
+        const selectedFilter = event.target.value
+        context.setCurrentFilter(selectedFilter)
+        context.applyFilter(selectedFilter)
     }
 
   return (
     <div className="container-filters">
-        <label>filtrar por </label>
-        <select onChange={handleFilters}>
+        <label>Filtrar por </label>
+        <select onChange={handleFilters} value={context.currentFilter}>
 <option value = "Todas" className="opt opt1">Todas </option>
 <option value = "Pendientes" className="opt opt2">Pendientes </option>
 <option value = "Realizadas" className="opt opt2">Realizadas </option>

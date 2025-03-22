@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import PropTypes from 'prop-types';
+import { createContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export const taskContext = createContext();
@@ -36,10 +37,35 @@ const tsk = [
 ];
 
 export const TaskProvider = ({ children }) => {
-  const [tasks, setTask] = useState(tsk);
-  const [filteredTasks, setFilteredTasks] = useState(tsk);
+  // Cargar tareas desde localStorage si existen, de lo contrario usar tareas predeterminadas
+  const initialTasks = JSON.parse(localStorage.getItem("tasks")) || tsk;
+  
+  const [tasks, setTask] = useState(initialTasks);
+  const [filteredTasks, setFilteredTasks] = useState(initialTasks);
   const [pendingTasks, setPendingTasks] = useState(0);
   const [doneTasks, setDoneTasks] = useState(0);
+  const [currentFilter, setCurrentFilter] = useState("Todas");
+
+  // Guardar tareas en localStorage cada vez que cambien
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  // Aplicar el filtro activo cada vez que las tareas cambian
+  useEffect(() => {
+    applyFilter(currentFilter);
+  }, [tasks, currentFilter]);
+
+  // Función para aplicar filtro
+  const applyFilter = (filter) => {
+    if (filter === "Pendientes") {
+      setFilteredTasks(tasks.filter(task => !task.status));
+    } else if (filter === "Realizadas") {
+      setFilteredTasks(tasks.filter(task => task.status));
+    } else {
+      setFilteredTasks(tasks);
+    }
+  };
 
   const updateTaskStatus = (taskId, newStatus) => {
     setTask((prevTasks) =>
@@ -47,6 +73,10 @@ export const TaskProvider = ({ children }) => {
         task.id === taskId ? { ...task, status: newStatus } : task
       )
     );
+  };
+
+  const deleteTask = (taskId) => {
+    setTask((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
   return (
@@ -61,11 +91,20 @@ export const TaskProvider = ({ children }) => {
         filteredTasks,
         setFilteredTasks,
         updateTaskStatus,
+        deleteTask,
+        currentFilter,
+        setCurrentFilter,
+        applyFilter
       }}
     >
       {children}
     </taskContext.Provider>
   );
+};
+
+// Agregar validación de props
+TaskProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 /*

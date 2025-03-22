@@ -1,0 +1,96 @@
+.tasks-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.tasks-section {
+  background-color: var(--card-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  width: 100%;
+  transition: var(--transition);
+}
+
+.tasks-section:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  text-align: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--primary-light);
+  position: relative;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 100px;
+  height: 2px;
+  transform: translateX(-50%);
+}
+
+/* Estilo para la sección de tareas pendientes */
+.tasks-section:first-child .section-title {
+  color: var(--pending-color);
+}
+
+.tasks-section:first-child .section-title::before {
+  background-color: var(--pending-color);
+}
+
+/* Estilo para la sección de tareas completadas */
+.tasks-section:last-child .section-title {
+  color: var(--done-color);
+}
+
+.tasks-section:last-child .section-title::before {
+  background-color: var(--done-color);
+}
+
+/* Mensaje cuando no hay tareas */
+.no-tasks {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media (min-width: 992px) {
+  .tasks-sections {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .tasks-section {
+    width: 48%;
+  }
+}
+
+@media (max-width: 576px) {
+  .tasks-sections {
+    padding: 0.5rem;
+  }
+  
+  .tasks-section {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+} 

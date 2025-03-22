@@ -5,38 +5,46 @@
 }
 
 .header-app {
-    width: 90vw;
-    
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    align-items: center;
-   
-    
-    background-color: #fff;
-  }
-  
- 
-  
+    background-color: var(--card-color);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
 
-  
-  h1 {
-    color: var(--font-color);
-    text-shadow: -2px -2px #8daaf4;
-    font-size: 3rem;
-  }
-  
-  .container-header-1 > .container-img {
+.header-app h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .header-app {
+        padding: 1.5rem 1rem;
+    }
+    
+    .header-app h1 {
+        font-size: 2rem;
+    }
+}
+
+.container-header-1 > .container-img {
     width: 40%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .container-img > img {
+}
+
+.container-img > img {
     width: 7rem;
     height: 7rem;
     border-radius: 50%;
-  }
+}
